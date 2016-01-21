@@ -16,4 +16,13 @@ class User < ActiveRecord::Base
     primary_key:  :id,
     class_name: "ShortenedUrl"
 
+  has_many :visited_urls,
+    through: :visits,
+    source: :shortened_url
+
+  has_many :visits,
+    foreign_key: :user_id,
+    primary_key: :id,
+    class_name: "Visit"
+
 end
