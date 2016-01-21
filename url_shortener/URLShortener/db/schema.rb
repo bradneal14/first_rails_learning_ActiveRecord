@@ -36,6 +36,13 @@ ActiveRecord::Schema.define(version: 20160120234745) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   create_table "visits", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "shortened_url_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "visits", ["shortened_url_id"], name: "index_visits_on_shortened_url_id", using: :btree
+  add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
 
 end
