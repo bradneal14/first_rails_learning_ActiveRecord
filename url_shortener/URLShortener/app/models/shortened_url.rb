@@ -18,7 +18,7 @@ class ShortenedUrl < ActiveRecord::Base
     foreign_key: :submitter_id,
     primary_key: :id,
     class_name: "User"
-
+    
   def self.random_code
     new_code = SecureRandom.urlsafe_base64(12)
     if ShortenedUrl.exists?(short_url: new_code)
